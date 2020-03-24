@@ -1,26 +1,22 @@
 package com.example.productList.model;
 
-import org.decimal4j.util.DoubleRounder;
+import javax.persistence.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Entity
 public class Product {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private int quantity;
-    private float price;
+
+    private double price;
+
 
     public Product() {
     }
 
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -37,19 +33,14 @@ public class Product {
         this.name = name;
     }
 
-    public int getQuantity() {
-        return quantity;
+
+    public double getPrice() {
+        return price;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public float getPrice() {
-        return getQuantity()*price;
-    }
-
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
+
+
 }
