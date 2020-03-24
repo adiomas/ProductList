@@ -1,9 +1,11 @@
 package com.example.productList.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 
 @Entity
+@Table(name = "products")
 public class Product {
 
     @Id
@@ -13,6 +15,8 @@ public class Product {
 
     private double price;
 
+    @ManyToMany(mappedBy = "purchasedProducts")
+    private Set<Purchase> products;
 
     public Product() {
     }
