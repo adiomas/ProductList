@@ -6,20 +6,35 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
         <changeSet id="1" author="Adrijan">
-            <createTable tableName="product" >
+            <createTable tableName="products" >
                 <column autoIncrement="true" name="id" type="LONG">
                     <constraints primaryKey="true"/>
                 </column>
-                <column name="name" type="VARCHAR(255)"/>
+                <column name="product_name" type="VARCHAR(255)"/>
                 <column name="price" type="DOUBLE"></column>
             </createTable>
         </changeSet>
     <changeSet id="2" author="Adrijan" >
-        <createTable tableName="customers" >
+        <createTable tableName="consumers" >
             <column autoIncrement="true" name="id" type="LONG">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="firstName" type="VARCHAR(255)">
+            <column name="first_name" type="VARCHAR(255)">
+            </column>
+        </createTable>
+        <createTable tableName="purchased_products" >
+            <column  name="purchase_id" type="LONG">
+            </column>
+            <column name="product_id" type="LONG">
+            </column>
+        </createTable>
+        <createTable tableName="purchases" >
+            <column autoIncrement="true" name="id" type="LONG">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="consumer_id" type="LONG">
+            </column>
+            <column name="created_date" type="LONG">
             </column>
         </createTable>
     </changeSet>

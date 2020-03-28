@@ -1,10 +1,9 @@
 package com.example.productList.model;
 
 import jdk.jfr.Enabled;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.Set;
 
 @Entity
@@ -14,6 +13,10 @@ public class Purchase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "created_date", nullable = false, updatable = false)
+    @CreatedDate
+    private Long createdDate;
 
 
     @ManyToOne
@@ -33,6 +36,14 @@ public class Purchase {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public long getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(long createdDate) {
+        this.createdDate = createdDate;
     }
 
     public Consumer getConsumer() {

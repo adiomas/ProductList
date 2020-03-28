@@ -11,6 +11,8 @@ public class Consumer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "first_name")
     private String firstName;
 
     @OneToMany(mappedBy = "consumer")
