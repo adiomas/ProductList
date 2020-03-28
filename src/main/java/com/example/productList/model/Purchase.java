@@ -16,9 +16,7 @@ public class Purchase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "created_date", nullable = false, updatable = false)
-    @CreatedDate
-    private Long createdDate;
+
 
 
     @ManyToOne
@@ -40,13 +38,6 @@ public class Purchase {
         this.id = id;
     }
 
-    public long getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(long createdDate) {
-        this.createdDate = createdDate;
-    }
 
     public Consumer getConsumer() {
         return consumer;
