@@ -12,6 +12,8 @@
                 </column>
                 <column name="product_name" type="VARCHAR(255)"/>
                 <column name="price" type="DOUBLE"></column>
+                <column name="created_date" type="VARCHAR(255)">
+            </column>
             </createTable>
         </changeSet>
     <changeSet id="2" author="Adrijan" >
@@ -34,7 +36,7 @@
             </column>
             <column name="consumer_id" type="LONG">
             </column>
-            <column name="created_date" type="LONG">
+            <column name="created_date" type="VARCHAR(255)">
             </column>
         </createTable>
     </changeSet>
