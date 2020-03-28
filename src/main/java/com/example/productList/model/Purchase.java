@@ -14,7 +14,7 @@ public class Purchase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Map<Product,Double> purchased = new LinkedHashMap<>();
+
 
     @ManyToOne
     @JoinColumn(name = "consumer_id")
@@ -35,14 +35,6 @@ public class Purchase {
         this.id = id;
     }
 
-    public Map<Product, Double> getPurchased() {
-        return purchased;
-    }
-
-    public void setPurchased(Map<Product, Double> purchased) {
-        this.purchased = purchased;
-    }
-
     public Consumer getConsumer() {
         return consumer;
     }
@@ -51,4 +43,11 @@ public class Purchase {
         this.consumer = consumer;
     }
 
+    public Set<Product> getPurchasedProducts() {
+        return purchasedProducts;
+    }
+
+    public void setPurchasedProducts(Set<Product> purchasedProducts) {
+        this.purchasedProducts = purchasedProducts;
+    }
 }
