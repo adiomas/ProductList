@@ -12,7 +12,7 @@ public class Product {
 
     private Long id;
     private String name;
-    private int quantity;
+
     private float price;
 
     public Product() {
@@ -37,16 +37,8 @@ public class Product {
         this.name = name;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
     public float getPrice() {
-        return getQuantity()*price;
+        return price;
     }
 
     public void setPrice(float price) {
