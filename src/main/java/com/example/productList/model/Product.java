@@ -1,26 +1,32 @@
 package com.example.productList.model;
 
-import org.decimal4j.util.DoubleRounder;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
-public class Product {
+@Table(name = "products")
+@EntityListeners(AuditingEntityListener.class)
+public class Product extends Auditable<String> {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "product_name")
     private String name;
-    private int quantity;
-    private float price;
+
+    @Column(name = "price")
+    private double price;
+
+    @ManyToMany(mappedBy = "purchasedProducts")
+    private List<Purchase> products;
 
     public Product() {
     }
 
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -37,19 +43,21 @@ public class Product {
         this.name = name;
     }
 
-    public int getQuantity() {
-        return quantity;
+
+
+    public double getPrice() {
+        return price;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public float getPrice() {
-        return getQuantity()*price;
-    }
-
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
+    }
+
+    public List<Purchase> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Purchase> products) {
+        this.products = products;
     }
 }
