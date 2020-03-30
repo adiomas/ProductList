@@ -43,8 +43,6 @@ public class Product extends Auditable<String> {
         this.name = name;
     }
 
-
-
     public double getPrice() {
         return price;
     }
