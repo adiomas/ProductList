@@ -10,9 +10,12 @@ import org.mockito.Mock;
 import org.springframework.test.context.junit4.SpringRunner;
 
 
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -37,9 +40,10 @@ public class ProductServiceTest {
     }
 
     @Test
-    public void getAllProducts_ifSizeOfProductsIsOne_returnProducts() {
+    public void getAllProducts_ifSizeOfProductsIsOne_returnProducts() throws FileNotFoundException {
         when(productRepository.findAll()).thenReturn(products);
         List<Product> prodList = productService.listAll();
+
         assertEquals(1, prodList.size());
         verify(productRepository, times(1)).findAll();
     }
