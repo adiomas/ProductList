@@ -1,12 +1,11 @@
-# Translation generators
+# Translation Generators
 
-These two scripts will help you to easily convert .arb files to .xlsx and vice versa. Scripts are written in Python.
-
+This repository contains two Python scripts that help you easily convert .arb files to .xlsx and vice versa. The scripts are designed to make the process of managing translation files more convenient and efficient.
 
 
 ### Requirements
 
-Before running the scripts, you must install the following libraries:
+Before running the scripts, make sure you have installed the following libraries:
 
 - Python 3.x
 - os
@@ -24,18 +23,9 @@ pip install os csv json collections tkinter pandas openpyxl pillow
 #pip3 install os csv json collections tkinter pandas openpyxl pillow
 ```
 
-### How to Run 🚀
-
-To run one of the scripts (e.g.'arb_to_excel.py'), open a terminal, navigate to the folder containing the script, and run the following command:
-```bash
-python arb_to_excel.py
-#python3 arb_to_excel.py
-```
-
-
 ## Script 1: 'arb_to_excel.py'
 
-This script helps you generate a translation file (in .xlsx format) from multiple .arb files in a project folder.
+This script helps you generate a translation file in .xlsx format from multiple .arb files in a project folder
 
 Here is the example:
 |Arb to Excel                                  |
@@ -48,16 +38,16 @@ python arb_to_excel.py
 #python3 arb_to_excel.py
 ```
 This script contains functions to select the root of project folder, parse the ARB files, and generate Excel file. The following steps are performed:
-* Selecting the "project_name" folder
-* The path of the "project_name" folder is extracted
-* A list of all the .arb files in the "/lib/l10n" folder is created
-* First, the contents of the "intl_en.arb" file are parsed as a JSON object
-* The contents of the remaining .arb files are parsed as JSON objects and appended to the data dictionary
-* .arb files are converted to an Excel file and saved in the "/lib/l10n" folder
+* Select the project folder
+* xtract the path of the project folder
+* Create a list of all .arb files in the "/lib/l10n" folder
+* Parse the contents of the "intl_en.arb" file as a JSON objectt
+* Parse the contents of the remaining .arb files as JSON objects and append them to the data dictionary
+* Convert the .arb files to an Excel file and save it in the "/lib/l10n" folder
 
 ## Script 2: 'excel_to_arb.py'
 
-This script helps you generate a multiple .arb files from excel file. If the value doesn't exists, you won't see that key-value pair in the .arb file
+This script helps you generate multiple .arb files from an excel file. If a value doesn't exist, the corresponding key-value pair will not be present in the .arb file. The steps taken by the script are:
 
 Here is the example:
 |Excel to Arb                                  |
@@ -70,10 +60,10 @@ python excel_to_arb.py
 #python3 excel_to_arb.py
 ```
 This script contains functions to select the excel file, select destination folder where .arb files will be saved. The following steps are performed:
-* Selecting the .xlsx file
-* Selecting destination folder where .arb files will be sabed
-* After clicking generate, script is converting excel to CSV file and then to a dictionary
-* The dictionary is then used to generate .arb files for different languages.
+* Select the .xlsx file
+* Select the destination folder where .arb files will be sabed
+* Convert the excel file to a CSV file and then to a dictionary
+* Generate .arb files for different languages using the dictionary
 
  
 # Contributors ✨
