@@ -62,7 +62,7 @@ This script helps you generate a multiple .arb files from excel file. If the val
 Here is the example:
 |Excel to Arb                                  |
 |:-------------------------------------------: |
-|![](arb_to_excel.gif) |
+|![](excel_to_arb.gif) |
 
 ### How To Use 🚀
 ```bash
