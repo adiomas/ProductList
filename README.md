@@ -2,213 +2,79 @@
 
 These two scripts will help you to easily convert .arb files to .xlsx and vice versa. Scripts are written in Python.
 
-## Preview
 
-## Getting Started
 
 ### Requirements
 
-## 1. arb_to_excel.py
+Before running the scripts, you must install the following libraries:
+
+- Python 3.x
+- os
+- csv
+- json
+- collections
+- Tkinter library (pre-installed in most Python installations)
+- pandas
+- openpyxl
+- PIL
+
+You can install the libraries by running the following command in your terminal:
+```bash
+pip install os csv json collections tkinter pandas openpyxl pillow
+#pip3 install os csv json collections tkinter pandas openpyxl pillow
+```
+
+### How to Run 🚀
+
+To run one of the scripts (e.g.'arb_to_excel.py'), open a terminal, navigate to the folder containing the script, and run the following command:
+```bash
+python arb_to_excel.py
+#python3 arb_to_excel.py
+```
+
+
+## Script 1: 'arb_to_excel.py'
+
 This script helps you generate a translation file (in .xlsx format) from multiple .arb files in a project folder.
 
-
-
-A brick to create persistent or not-persistent bottom navigation bar. Works on mobile and web.
-
-## Preview
-
-Persistent and non-persistent bottom navigation bar
-
-
-|Persistent                                        |Not-persistent                               |
-|:-------------------------------------------: |:-----------------------------------------------:|
-|![](persistent1.gif) |![](not_persistent1.gif)|
-
-
-
-
-
-## Getting Started
-
-### Requirements
-
- - [Beamer](https://pub.dev/packages/beamer)
+Here is the example:
+|Arb to Excel                                  |
+|:-------------------------------------------: |
+|![](arb_to_excel.gif) |
 
 ### How To Use 🚀
-
-1. In the root folder of your project run the following command (replace **my_app** with the name of **YOUR** app).
-
+```bash
+python arb_to_excel.py
+#python3 arb_to_excel.py
 ```
-mason make bottom_navigation_bar --project_name my_app
+This script contains functions to select the root of project folder, parse the ARB files, and generate Excel file. The following steps are performed:
+* Selecting the "project_name" folder
+* The path of the "project_name" folder is extracted
+* A list of all the .arb files in the "/lib/l10n" folder is created
+* First, the contents of the "intl_en.arb" file are parsed as a JSON object
+* The contents of the remaining .arb files are parsed as JSON objects and appended to the data dictionary
+* .arb files are converted to an Excel file and saved in the "/lib/l10n" folder
+
+## Script 2: 'excel_to_arb.py'
+
+This script helps you generate a multiple .arb files from excel file. If the value doesn't exists, you won't see that key-value pair in the .arb file
+
+Here is the example:
+|Excel to Arb                                  |
+|:-------------------------------------------: |
+|![](arb_to_excel.gif) |
+
+### How To Use 🚀
+```bash
+python excel_to_arb.py
+#python3 excel_to_arb.py
 ```
-You will get an interactive prompt where you'll specify bottom navigation bar **type**, **number of tabs** in the navigation bar and the **names** of tabs.
+This script contains functions to select the excel file, select destination folder where .arb files will be saved. The following steps are performed:
+* Selecting the .xlsx file
+* Selecting destination folder where .arb files will be sabed
+* After clicking generate, script is converting excel to CSV file and then to a dictionary
+* The dictionary is then used to generate .arb files for different languages.
 
-![](terminal.svg)
-
-2. In the ***home_tabs.dart*** configure icons of your tabs.
-
-<details open="open">
-<summary>home_tabs.dart</summary>
-
-```dart
-enum HomeTabs {
-  home,
-  myReservations,
-  myProfile,
-}
-
-extension HomeTabExtension on HomeTabs {
-  static final tabImagesPath = {
-    HomeTabs.home: Icons.home,
-    HomeTabs.myReservations: Icons.home,
-    HomeTabs.myProfile: Icons.home,
-  };
-
-  static final tabTitle = {
-    HomeTabs.home: 'Home',
-    HomeTabs.myReservations: 'My reservations',
-    HomeTabs.myProfile: 'My profile',
-  };
-
-  static final tabRoute = {
-    HomeTabs.home: HomePage.routeName,
-    HomeTabs.myReservations: MyReservationsPage.routeName,
-    HomeTabs.myProfile: MyProfilePage.routeName,
-  };
-
-  static final snakeCaseTitle = {
-    HomeTabs.home: '/home',
-    HomeTabs.myReservations: '/my_reservations',
-    HomeTabs.myProfile: '/my_profile',
-  };
-
-  String getTabTitle() => tabTitle[this]!;
-
-  String getTabRoute() => tabRoute[this]!;
-
-  IconData getImagePath() => tabImagesPath[this]!;
-
-  String getSnakeCaseTitle() => snakeCaseTitle[this]!;
-}
-```
-</details>
-
-3. In generated ***test.dart*** file you'll see commented code. Uncomment code where you can see ***if/else*** statements:
-
-<details open="open">
-<summary>Case 1: Persistent</summary>
-
-```dart
-if (routeInformation.location!.contains('home') ||
-              routeInformation.location!.contains('my_reservations') ||
-              routeInformation.location!.contains('my_profile')) {
-            return BottomNavbarLocation(routeInformation);
-          }
-```
-</details>
-
-<details open="open">
-<summary>Case 2: Not-Persistent</summary>
-
-```dart
-if (routeInformation.location!.contains('counter')) {
-            return CounterLocation(routeInformation);
-          } else if (routeInformation.location!.endsWith('home') ||
-              routeInformation.location!.endsWith('my_reservations') ||
-              routeInformation.location!.endsWith('my_profile')) {
-            return BottomNavbarLocation(routeInformation);
-          }
-```
-</details>
-
-4. Paste that code inside *locationBuilder* in ***BeamerRouter***:
-
-<details open="open">
-<summary>Example</summary>
-
-```dart
-BeamerRouter(
-      routerDelegate: BeamerDelegate(
-        initialPath: '/',
-        locationBuilder: (routeInformation, _) {
-          if (routeInformation.location!.contains('home') ||
-              routeInformation.location!.contains('my_reservations') ||
-              routeInformation.location!.contains('my_profile')) {
-            return BottomNavbarLocation(routeInformation);
-          } else {
-            return BeamerLocations(routeInformation);
-          }
-        },
-      ),
-      routeInformationParser: BeamerParser(),
-    );
-```
-</details>
-
-
-## Variables ✨
-
-| Variable         | Description                      | Default      | Type    |
-| :---------------:|:-------------------------------: | :---------:  | :-----: |
-| `project_name`   | The name of your project         | my_app       | `string`|
-| `bottom_nav_bar` | Bottom navigation bar type       | persistent   | `enum`  |
-| `number_of_tabs` | Number of tabs                   |    4         | `int`   |
-
-
-## Outputs 📦
-
-<details open="open">
-<summary>Structure of folders</summary>
-
-```
-├── features
-    ├── bottom_navbar
-        ├── bottom_navbar.dart
-        ├── bottom_navbar_location.dart
-        ├── home_tabs.dart
-        ├── navbar_delegates.dart
-        └── test.dart
-    ├── home
-        ├── data
-            ├── models
-            └── repositories
-        ├── domain
-            ├── entities
-            └── notifiers
-        ├── home_location.dart
-        └── presentation
-            ├── pages
-                └── home_page.dart
-            └── widgets
-    ├── my_profile
-        ├── data
-            ├── models
-            └── repositories
-        ├── domain
-            ├── entities
-            └── notifiers
-        ├── my_profile_location.dart
-        └── presentation
-            ├── pages
-                └── my_profile_page.dart
-            └── widgets
-    └── my_reservations
-        ├── data
-            ├── models
-            └── repositories
-        ├── domain
-            ├── entities
-            └── notifiers
-        ├── my_reservation_location.dart
-        └── presentation
-            ├── pages
-                └── my_reservation_page.dart
-            └── widgets
- ```
-</details>
- 
- 
- 
  
 # Contributors ✨
 
